@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Thread;
+use App\Models\Reply;
 
 class ThreadController extends Controller
 {
