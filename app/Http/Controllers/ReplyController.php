@@ -13,9 +13,10 @@ class ReplyController extends Controller
     {
         $request->validate([
             'content' => 'required',
+            'name' => 'nullable|string|max:255',
         ]);
     
-        $thread->replies()->create($request->all());
+        $thread->replies()->create($request->only(['content', 'name']));
         return redirect()->route('threads.show', $thread);
     }
 

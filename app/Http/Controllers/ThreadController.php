@@ -25,9 +25,10 @@ class ThreadController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'name' => 'nullable|string|max:255',
         ]);
 
-        Thread::create($request->all());
+        Thread::create($request->only(['title', 'content', 'name']));
         return redirect()->route('threads.index');
     }
 
