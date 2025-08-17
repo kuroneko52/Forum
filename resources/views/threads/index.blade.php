@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>スレッド一覧</h2>
-
+    <h1>スレッド一覧</h1>
     @foreach ($threads as $thread)
         <div class="thread">
-            <h3><a href="{{ route('threads.show', $thread->id) }}">{{ $thread->title }}</a></h3>
+            <h2><a href="{{ route('threads.show', $thread) }}" target="_blank">{{ $thread->title }}</a></h2>
             <p>{{ $thread->content }}</p>
-            <p>レスポンス数: {{ $thread->replies->count() }} | 投稿日: {{ $thread->created_at->format('Y/m/d H:i') }}</p>
+            <small>投稿日: {{ $thread->created_at->format('Y/m/d H:i:s') }}</small>
         </div>
         <hr>
     @endforeach
-    <a href="{{ route('threads.create') }}">新規スレッド作成</a>
+    <a href="{{ route('threads.create') }}" class="btn btn-success">新規スレッド作成</a>
 @endsection
