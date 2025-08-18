@@ -3,15 +3,14 @@
 @section('content')
     <h1>{{ $thread->title }}</h1>
 
-    <p>1 : {{ $thread->created_at->format('Y/m/d H:i:s') }}</p>
-    
+    <p><strong id="thread-info">1 名前：{{ $thread->name ?? '名無しさん' }} {{ $thread->created_at->format('Y/m/d H:i:s') }}</strong></p>
     <div class="reply" id="thread">
         <p>{{ $thread->content }}</p>
     </div>
     <hr>
 
     @foreach ($thread->replies as $index => $reply)
-        <p>{{ $index + 2 }} : {{ $reply->created_at->format('Y/m/d H:i:s') }}</p>
+        <p><strong id="reply-info-{{ $index + 2 }}">{{ $index + 2 }} 名前：{{ $reply->name ?? '名無しさん' }} {{ $reply->created_at->format('Y/m/d H:i:s') }}</strong></p>
         <div class="reply" id="reply-{{ $reply->id }}">
             <p>{!! convertReplyContent($reply->content, $thread) !!}</p>
         </div>
