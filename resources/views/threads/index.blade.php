@@ -6,7 +6,9 @@
         <div class="thread">
             <h2><a href="{{ route('threads.show', $thread) }}" target="_blank">{{ $thread->title }}</a></h2>
             <p>{{ $thread->content }}</p>
-            <small>投稿日: {{ $thread->created_at->format('Y/m/d H:i:s') }}</small>
+            <small>名前：{{ $thread->name ?? '名無しさん' }}</small>
+            <br>
+            <small>作成日：{{ $thread->created_at->format('Y/m/d H:i:s') }}</small>
         </div>
         <hr>
     @endforeach
